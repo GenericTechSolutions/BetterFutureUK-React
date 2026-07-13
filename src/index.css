@@ -338,10 +338,11 @@ button.home__btn:hover {
 
 .home-hero__subtitle {
   margin: 0;
-  font-size: calc(var(--text-title) * 1.8);
+  font-size: calc(var(--text-title) * 1.4);
   font-weight: 700;
   color: var(--text-primary);
   max-width: 100%;
+  line-height: 1.4;
 }
 
 .home-hero__tagline {
@@ -361,6 +362,28 @@ button.home__btn:hover {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-decoration: none;
+}
+
+/* ---- Mobile adjustments for hero section ---- */
+
+@media (max-width: 768px) {
+  .home-hero {
+    min-height: auto !important;
+    justify-content: flex-start !important;
+    padding-top: calc(var(--header-height) + var(--space-lg)) !important;
+    padding-bottom: var(--space-2xl) !important;
+  }
+
+  .home-hero__title {
+    font-size: calc(var(--text-title) * 3) !important;
+    line-height: 1.15 !important;
+  }
+
+  .home-hero__subtitle {
+    font-size: calc(var(--text-title) * 1.4) !important;
+    line-height: 1.5 !important;
+    padding-bottom: 1rem;
+  }
 }
 
 /* ---- Section title + subtitle ---- */
