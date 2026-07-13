@@ -12,19 +12,14 @@ export function Contact() {
 
     // Netlify SPA form submission — POST to the built-in handler.
     const form = e.currentTarget;
-    const get = (key: string) => (form.elements.namedItem(key) as HTMLInputElement)?.value ?? '';
+    const body = new URLSearchParams();
+    body.set('form-name', 'Contact');
+    for (const [key, value] of new FormData(form).entries()) {
+      if (key !== 'bot-field' && typeof value === 'string') body.append(key, value);
+    }
 
-    await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        'form-name': 'Contact',
-        name: get('name'),
-        email: get('email'),
-        phone: get('phone'),
-        message: get('message'),
-      }).toString(),
-    });
+    const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+    if (!res.ok) console.error('Netlify form POST failed:', res.status, res.statusText);
 
     setSubmitted(true);
   };
