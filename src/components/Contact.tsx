@@ -31,8 +31,9 @@ export function Contact() {
         Get in touch to discuss speaking engagements or training sessions.
       </p>
 
+      <div style={{ textAlign: 'center' }}>
       {submitted ? (
-        <div className="home-card home-card--highlighted" style={{ textAlign: 'center', padding: 'var(--space-xl)' }}>
+        <div className="home-card home-card--highlighted" style={{ padding: 'var(--space-xl)', display: 'inline-block', textAlign: 'center' }}>
           <p style={{ fontSize: 'var(--text-xlarge)', color: 'var(--text-primary)' }}>
             Thank you! We'll be in touch soon.
           </p>
@@ -66,6 +67,7 @@ export function Contact() {
           <button type="submit" className="home__btn home__btn--primary home__btn--large">Send</button>
         </form>
       )}
+      </div>
     </section>
   );
 }
